@@ -17,8 +17,11 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('email')->unique();
             $table->string('password');
+            $table->unsignedBigInteger('academico_id')->unique();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index('academico_id');
         });
     }
 

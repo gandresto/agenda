@@ -29,6 +29,6 @@ class User extends Authenticatable
 
     public function academico()
     {
-        return $this->belongsTo('App\Academico');
+        return $this->belongsTo(Academico::class);
     }
 }

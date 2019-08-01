@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Academico extends Model
 {
-    $this->table = "academicos";
+    protected $table = 'academicos';
 
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->hasOne(User::class);
     }
 
     public function divisiones()
     {
-        return $this->hasMany('App\Division', 'id_jefe_div');
+        return $this->hasMany(Division::class, 'id_jefe_div');
     }
 }

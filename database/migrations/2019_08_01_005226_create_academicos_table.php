@@ -18,9 +18,9 @@ class CreateAcademicosTable extends Migration
             $table->string('nombre');
             $table->string('apellido_pat');
             $table->string('apellido_mat');
-            $table->unsignedBigInteger('user_id')->unique();
             $table->timestamps();
         });
+    }
 
     /**
      * Reverse the migrations.
