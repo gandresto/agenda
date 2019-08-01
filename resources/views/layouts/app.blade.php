@@ -72,6 +72,16 @@
         </nav>
 
         @yield('content')
+
+        <!-- Footer -->
+
+        <footer class="page-footer font-small blue pt-6">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">Copyrights © 2019 / Facultad de Ingeniería/ UNAM /
+            </div>
+            <!-- Copyright -->      
+      </footer>
+      <!-- Footer -->
     </div>
 
     <!-- Scripts -->
