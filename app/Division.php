@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Division extends Model
 {
-    public function academico()
+    public function jefe()
     {
-        return $this->belongsTo(Academico::class);
+        return $this->belongsTo(Academico::class, 'id_jefe_div');
+    }
+
+    public function departamentos()
+    {
+        return $this->hasMany(Departamento::class);
     }
 }

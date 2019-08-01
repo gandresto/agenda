@@ -13,8 +13,24 @@ class Academico extends Model
         return $this->hasOne(User::class);
     }
 
-    public function divisiones()
+    public function jefeDeDivisiones()
     {
-        return $this->hasMany(Division::class, 'id_jefe_div');
+        return $this->hasMany(Division::class);
+    }
+
+    public function jefeDeDepartamentos()
+    {
+        return $this->hasMany(Departamento::class);
+    }
+
+    public function presidenteDeAcademias()
+    {
+        return $this->hasMany(Academia::class);
+    }
+
+    public function academias()
+    {
+        return $this->belongsToMany(Academia::class)
+                    ->withPivot('estado', 'fecha_ingreso', 'fecha_egreso');
     }
 }
