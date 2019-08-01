@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Division extends Model
 {
+    protected $fillable = [
+        'siglas', 'nombre'
+    ];
+
     public function jefe()
     {
         return $this->belongsTo(Academico::class, 'id_jefe_div');
