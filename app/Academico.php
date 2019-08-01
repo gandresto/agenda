@@ -10,7 +10,12 @@ class Academico extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'academico_id');
+    }
+
+    public function grado()
+    {
+        return $this->belongsTo(Grado::class);
     }
 
     public function jefeDeDivisiones()

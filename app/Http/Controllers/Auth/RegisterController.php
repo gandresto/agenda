@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Academico;
+use App\Grado;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -48,6 +50,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'grado_id' => 'required|string|max:8',
+            'nombre' => 'required|string|max:255',
+            'apellido_pat' => 'required|string|max:255',
+            'apellido_mat' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -61,9 +67,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        #$user = new User;
+        #$user->email = $data['email'];
+        #$user->password = bcrypt($data['password']),
+
+        $academico = new Academico;
+        $academico->nombre = $data['nombre'];
+        $academico->apellido_pat = $data['apellido_pat'];
+        $academico->apellido_mat = $data['apellido_mat'];
+        $academico->grado_id = $data['grado_id'];
+        #$academico->user = $user;
+        #$academico->push();
+        $academico->push();
+
         return User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
+            'academico_id' => $academico->id,
+        ]);;
     }
 }

@@ -15,10 +15,13 @@ class CreateAcademicosTable extends Migration
     {
         Schema::create('academicos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
+            $table->string('grado_id', 8);
+            $table->string('nombre');            
             $table->string('apellido_pat');
             $table->string('apellido_mat');
             $table->timestamps();
+
+            $table->index('grado_id');
         });
     }
 
