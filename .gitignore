@@ -12,3 +12,4 @@ yarn-error.log
 .env
 env_bueno.txt
 /database/database.sqlite
+agenda-ws.code-workspace
