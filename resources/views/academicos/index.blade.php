@@ -14,7 +14,7 @@
                     <div class="p-1">
                         <div class="row">
                             <div class="col-md-12">
-                                <a type="button" class="btn btn-primary" href="{{route('register')}}">
+                                <a type="button" class="btn btn-primary" href="{{route('academicos.create')}}">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     <span class="pl-6">Añadir académico</span>                                        
                                 </a>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="p-1">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Buscar" aria-describedby="basic-addon2">
                                     <span class="input-group-btn">
@@ -32,11 +32,12 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <select name="sel-columna" id="inputsel-columna" class="form-control">
-                                    <option value="">-- Select One --</option>
-                                    <option value="">col1</option>
-                                    <option value="">col2</option>
+                                    <option value="">Buscar por</option>
+                                    @foreach (Schema::getColumnListing('academicos') as $columna)
+                                        <option value="{{$columna}}">{{$columna}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -65,7 +66,7 @@
                                         <td>{{$academico->nombre}}</td>
                                         <td>{{$academico->apellido_pat}}</td>
                                         <td>{{$academico->apellido_mat}}</td>
-                                        <td>{{$academico->user->email}}</td>
+                                        <td>{{$academico->user ? $academico->user->email : 'N/A'}}</td>
                                         <td>Editar, Borrar</td>
                                     </tr>
                                 @endforeach

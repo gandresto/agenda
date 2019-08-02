@@ -8,6 +8,10 @@ class Academico extends Model
 {
     protected $table = 'academicos';
 
+    protected $fillable = [
+        'grado_id', 'nombre', 'apellido_pat', 'apellido_mat'
+    ];
+
     public function user()
     {
         return $this->hasOne(User::class, 'academico_id');
