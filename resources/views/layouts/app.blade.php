@@ -37,6 +37,33 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('home')}}">
+                                Calendario
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Reuniones y Documentos
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                <li><a href="#">Reuniones</a></li>
+                                <li><a href="#">Minutas</a></li>
+                                <li><a href="#">Órdenes del día</a></li>
+                                <li><a href="#">Asuntos Pendientes</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    Estructura de la FI <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                    <li><a href="{{route('division.index')}}">Divisiones</a></li>
+                                    <li><a href="#">Departamentos</a></li>
+                                    <li><a href="#">Academias</a></li>
+                                </ul>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

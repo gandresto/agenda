@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{$division->nombre}}
+    {{$academico->nombre}}
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{$division->nombre}}</div>
+                <div class="panel-heading">{{$academico->nombre}}</div>
 
                 <div class="panel-body">
                     @if (session('status'))
