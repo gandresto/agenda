@@ -40,8 +40,6 @@ class AcademicosController extends Controller
             'apellido_pat' => $request['apellido_pat'],
             'apellido_mat' => $request['apellido_mat'],
         ]);
-        
-        alert('Academico agregado');
 
         return redirect(route('academicos.index'));
     }
