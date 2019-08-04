@@ -8,6 +8,11 @@ use App\Academico;
 
 class AcademicosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Academico $academicos)
     {
         $academicos = Academico::all();
@@ -22,6 +27,11 @@ class AcademicosController extends Controller
     public function create()
     {
         return view('academicos.create');
+    }
+
+    public function registrar()
+    {
+        return view('academicos.registrar');
     }
 
     public function store(Request $request)
@@ -41,6 +51,10 @@ class AcademicosController extends Controller
             'apellido_pat' => $request['apellido_pat'],
             'apellido_mat' => $request['apellido_mat'],
         ]);
+
+        $request->session()->flash('status', 'Académico con nombre \'' 
+                                                . $request['nombre'] 
+                                                .'\' creado satisfactoriamente.');
 
         return redirect(route('academicos.index'));
     }

@@ -34,7 +34,12 @@ Route::get('/division/{division}', 'DivisionController@show')->name('division.sh
 #Route::resource('/academicos', 'AcademicosController', ['only' => 'show']);
 Route::get('/academicos', 'AcademicosController@index')->name('academicos.index');
 Route::post('/academicos', 'AcademicosController@store')->name('academicos.store');
-Route::get('/academicos/create', 'AcademicosController@create')->name('academicos.create');
+Route::get('/academicos/create', 'AcademicosController@create')
+            ->name('academicos.create')
+            ->middleware('admin');
+Route::get('/academicos/registrar', 'AcademicosController@registrar')
+            ->name('academicos.registrar')
+            ->middleware('admin');;
 Route::get('/academicos/buscar/{busqueda}', 'AcademicosController@buscar')->name('academicos.buscar');
 Route::get('/academicos/{academico}', 'AcademicosController@show')->name('academicos.show');
 Route::get('/academicos/{academico}/edit', 'AcademicosController@edit')->name('academicos.edit');

@@ -32,29 +32,30 @@
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
-
+               
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('home')}}">
-                                Calendario
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Reuniones y Documentos
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                <li><a href="#">Reuniones</a></li>
-                                <li><a href="#">Minutas</a></li>
-                                <li><a href="#">Órdenes del día</a></li>
-                                <li><a href="#">Asuntos Pendientes</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
+                    @if (Auth::check())
+                        <ul class="nav navbar-nav">
+                            &nbsp;
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('home')}}">
+                                    Calendario
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    Reuniones y Documentos
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                    <li><a href="#">Reuniones</a></li>
+                                    <li><a href="#">Minutas</a></li>
+                                    <li><a href="#">Órdenes del día</a></li>
+                                    <li><a href="#">Asuntos Pendientes</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-expanded="false">
                                     Estructura de la FI <span class="caret"></span>
                                 </a>
@@ -64,18 +65,25 @@
                                     <li><a href="#">Academias</a></li>
                                 </ul>
                             </li>
-                    </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('academicos.index')}}">
+                                    Academicos
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">@lang('strings.login')</a></li>
-                            <li><a href="{{ route('register') }}">@lang('strings.register')</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->academico->nombre }} <span class="caret"></span>
+                                    {{ Auth::user()->academico->grado_id . ' ' . Auth::user()->academico->nombre }} 
+                                    <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -98,7 +106,20 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">@yield('title')</div>
+                        <div class="panel-body">
+                                @yield('content')
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
 
         <!-- Footer -->
 

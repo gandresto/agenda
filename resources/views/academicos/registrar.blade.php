@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    Agregar Académico
+    Registrar Académico
 @endsection
 
 @section('content')
-    <form class="form-horizontal" method="POST" action="/academicos">
+    Random pass: {{random_str()}}
+    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
         {{ csrf_field() }}
         <div class="form-group{{ $errors->has('grado_id') ? ' has-error' : '' }}">
             <label for="grado_id" class="col-md-4 control-label" required>Grado</label>
@@ -63,12 +64,48 @@
                     </span>
                 @endif
             </div>
-        </div>                       
+        </div>
+
+        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <label for="email" class="col-md-4 control-label">E-Mail</label>
+
+            <div class="col-md-6">
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <label for="password" class="col-md-4 control-label">Contraseña</label>
+
+            <div class="col-md-6">
+                <input id="password" type="password" class="form-control" name="password" required>
+
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password-confirm" class="col-md-4 control-label">Confirmar contraseña</label>
+
+            <div class="col-md-6">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
                 <button type="submit" class="btn btn-primary">
-                    Registrar Académico
+                    Registrar
                 </button>
             </div>
         </div>

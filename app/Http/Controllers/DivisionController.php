@@ -47,7 +47,9 @@ class DivisionController extends Controller
             'siglas' => $request['siglas'],
             'nombre' => $request['nombre'],
         ]);
-
+        $request->session()->flash('status', 'División con nombre \'' 
+                                            . $request['nombre'] 
+                                            .'\' creada satisfactoriamente.');
         return redirect('/division');
     }
 }
