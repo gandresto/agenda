@@ -23,6 +23,17 @@ class CreateUsersTable extends Migration
 
             $table->index('academico_id');
         });
+
+        #DB::update("ALTER TABLE users AUTO_INCREMENT = 2;");
+
+        DB::table('users')->insert([
+            [
+                'id' => 1,
+                'email'=> config('admin.login'),
+                'password'=> bcrypt(config('admin.password')),
+                'academico_id' => 1
+            ],
+        ]);
     }
 
     /**

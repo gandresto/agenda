@@ -44925,7 +44925,9 @@ var render = function() {
                   _vm._v(
                     "\n                    " +
                       _vm._s(
-                        academico.nombre +
+                        academico.grado_id +
+                          " " +
+                          academico.nombre +
                           " " +
                           academico.apellido_pat +
                           " " +

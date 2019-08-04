@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Division;
+use App\Http\Middleware\AdminMiddleware;
 
 class DivisionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $divisiones = Division::all();
@@ -21,6 +28,7 @@ class DivisionController extends Controller
 
     public function create()
     {
+        #$this->middleware(AdminMiddleware::class);
         return view('division.create');
     }
 

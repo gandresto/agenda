@@ -23,6 +23,16 @@ class CreateAcademicosTable extends Migration
 
             $table->index('grado_id');
         });
+
+        DB::table('academicos')->insert([
+            [
+                'id' => 1,
+                'grado_id'=> config('admin.grado'),
+                'nombre'=> config('admin.nombre'),
+                'apellido_pat'=> config('admin.apellido_pat'),
+                'apellido_mat'=> config('admin.apellido_mat'),                
+            ],
+        ]);
     }
 
     /**

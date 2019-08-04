@@ -17,11 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+/* Route::group(['middleware' => ['App\Http\Middleware\AdminMiddleware']], 
+    function () {
+        Route::match(['get', 'post'], '/division/create', 'DivisionController@create');
+}); */
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/division', 'DivisionController@index')->name('division.index');
 Route::post('/division', 'DivisionController@store')->name('division.store');
-Route::get('/division/create', 'DivisionController@create')->name('division.create');
+Route::get('/division/create', 'DivisionController@create')
+            ->name('division.create')
+            ->middleware('admin');
 Route::get('/division/{division}', 'DivisionController@show')->name('division.show');
 
 #Route::resource('/academicos', 'AcademicosController', ['only' => 'show']);

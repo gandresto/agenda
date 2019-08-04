@@ -43,9 +43,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <buscar-usuario tieneerrores="{{$errors->has('jefeDeDivision')}}" errores="{{$errors->has('jefeDeDivision') ? $errors->first('jefeDeDivision') : ''}}"></buscar-usuario>
-                        </div>
+                        <buscar-usuario tieneerrores="{{$errors->has('jefeDeDivision')}}" errores="{{$errors->has('jefeDeDivision') ? $errors->first('jefeDeDivision') : ''}}"></buscar-usuario>
                         
 
 

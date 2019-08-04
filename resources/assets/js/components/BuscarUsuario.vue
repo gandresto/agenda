@@ -12,7 +12,7 @@
                 <div class="radio" v-for="(academico, index) in academicos" :key="index">
                     <label :for="[academico.id]">
                         <input type="radio" name="jefeDeDivision" :id="[academico.id]" :value="[academico.id]" required>
-                        {{ academico.nombre + ' ' + academico.apellido_pat + ' ' + academico.apellido_mat}}
+                        {{ academico.grado_id + ' ' + academico.nombre + ' ' + academico.apellido_pat + ' ' + academico.apellido_mat}}
                     </label>
                 </div>
             
