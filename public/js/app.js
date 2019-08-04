@@ -44817,7 +44817,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
 
-    props: ['errores'],
+    props: ['errores', 'tieneerrores'],
 
     data: function data() {
         return {
@@ -44867,7 +44867,12 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { id: "buscarJefe", type: "text", placeholder: "Buscar..." },
+          attrs: {
+            id: "buscarJefe",
+            name: "buscarJefe",
+            type: "text",
+            placeholder: "Buscar..."
+          },
           domProps: { value: _vm.busqueda },
           on: {
             input: [
@@ -44897,47 +44902,51 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-8 col-md-offset-4" },
-        [
-          _vm._l(_vm.academicos, function(academico, index) {
-            return _c("div", { key: index, staticClass: "radio" }, [
-              _c("label", [
-                _c("input", {
-                  attrs: {
-                    type: "radio",
-                    name: "jefeDeDivision",
-                    id: [academico.id],
-                    required: ""
-                  },
-                  domProps: { value: [academico.id] }
-                }),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(
-                      academico.nombre +
-                        " " +
-                        academico.apellido_pat +
-                        " " +
-                        academico.apellido_mat
-                    ) +
-                    "\n                "
-                )
+    _c(
+      "div",
+      { class: [_vm.tieneerrores ? "form-group has-error" : "form-group"] },
+      [
+        _c(
+          "div",
+          { staticClass: "col-md-8 col-md-offset-4" },
+          [
+            _vm._l(_vm.academicos, function(academico, index) {
+              return _c("div", { key: index, staticClass: "radio" }, [
+                _c("label", { attrs: { for: [academico.id] } }, [
+                  _c("input", {
+                    attrs: {
+                      type: "radio",
+                      name: "jefeDeDivision",
+                      id: [academico.id],
+                      required: ""
+                    },
+                    domProps: { value: [academico.id] }
+                  }),
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(
+                        academico.nombre +
+                          " " +
+                          academico.apellido_pat +
+                          " " +
+                          academico.apellido_mat
+                      ) +
+                      "\n                "
+                  )
+                ])
               ])
-            ])
-          }),
-          _vm._v(" "),
-          _vm.errores
-            ? _c("span", { staticClass: "help-block" }, [
-                _c("strong", [_vm._v(_vm._s(_vm.errores))])
-              ])
-            : _vm._e()
-        ],
-        2
-      )
-    ])
+            }),
+            _vm._v(" "),
+            _vm.errores
+              ? _c("span", { staticClass: "help-block" }, [
+                  _c("strong", [_vm._v(_vm._s(_vm.errores))])
+                ])
+              : _vm._e()
+          ],
+          2
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = []
