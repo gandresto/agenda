@@ -37,7 +37,7 @@ class AcademicosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'grado_id' => 'required|max:8|string',
+            'grado_id' => 'required|max:8|string|exists:grados,id',
             'nombre' => 'required|max:255|string',
             'apellido_pat' => 'required|max:255|string',
             'apellido_mat' => 'required|max:255|string',
@@ -68,13 +68,13 @@ class AcademicosController extends Controller
             $academicos = Academico::orWhereRaw("nombre || ' ' || apellido_pat || ' ' || apellido_mat like '%" . 
                                 $busqueda . "%' ")
                                 ->orderBy('name', 'desc')
-                                ->limit(3)
+                                ->limit(5)
                                 ->get();
         } else {
             $academicos = Academico::orWhereRaw("concat(nombre, ' ', apellido_pat, ' ', apellido_mat) like '%" . 
                                 $busqueda . "%' ")
                                 ->orderBy('name', 'desc')
-                                ->limit(3)
+                                ->limit(5)
                                 ->get();
         }
         return response()->json($academicos);

@@ -8,10 +8,11 @@
     <form class="form-horizontal" method="POST" action="/academicos">
         {{ csrf_field() }}
         <div class="form-group{{ $errors->has('grado_id') ? ' has-error' : '' }}">
-            <label for="grado_id" class="col-md-4 control-label" required>Grado</label>
+            <label for="grado_id" class="col-md-4 control-label" required>Grado Académico</label>
             <div class="col-md-6">
                 <select class="form-control" name="grado_id" id="grado_id">
-                    @foreach (App\Grado::all()->sortBy('jerarquia') as $grado)
+                        <option value="null">Selecciona Uno</option>
+                    @foreach (App\Grado::all()->sortBy('id') as $grado)
                         <option value="{{$grado->id}}">{{$grado->id}}</option>
                     @endforeach                            
                 </select>
