@@ -10,11 +10,16 @@
         <div class="form-group">
             <div class="col-md-8 col-md-offset-4">
                 <div class="radio" v-for="(academico, index) in academicos" :key="index">
-                <label>
-                    <input type="radio" name="selectAcademico" :id="[academico.id]" :value="[academico.id]" checked>
-                    {{ academico.nombre + ' ' + academico.apellido_pat + ' ' + academico.apellido_mat}}
-                </label>
+                    <label>
+                        <input type="radio" name="jefeDeDivision" :id="[academico.id]" :value="[academico.id]" required>
+                        {{ academico.nombre + ' ' + academico.apellido_pat + ' ' + academico.apellido_mat}}
+                    </label>
                 </div>
+            
+                <span class="help-block" v-if="errores">
+                    <strong>{{ errores }}</strong>
+                </span>
+
             </div>
         </div>
         
@@ -26,6 +31,8 @@
         mounted() {
             console.log('Component mounted.')
         },
+
+        props : ['errores'],
 
         data : function () {
             return {

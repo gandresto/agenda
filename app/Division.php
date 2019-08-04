@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Division extends Model
 {
     protected $fillable = [
-        'siglas', 'nombre'
+        'siglas', 'nombre', 'id_jefe_div'
     ];
 
     public function jefe()

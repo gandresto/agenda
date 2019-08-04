@@ -25,21 +25,20 @@ class DivisionController extends Controller
     }
 
     public function store(Request $request)
-    {
-        
-        $data = $this->validate($request, [
+    {   
+        $this->validate($request, [
             'siglas' => 'required|unique:divisions|max:255|string',
             'nombre' => 'required|unique:divisions|max:255|string',
+            'jefeDeDivision' => ['required', 'exists:academicos,id'],
         ]);
 
-        #dd($request['siglas']);
+        #dd($request['jefeDeDivision']);
 
         Division::create([
+            'id_jefe_div' => $request['jefeDeDivision'],
             'siglas' => $request['siglas'],
             'nombre' => $request['nombre'],
         ]);
-        
-        alert('División agregada');
 
         return redirect('/division');
     }

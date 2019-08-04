@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-group">
-                            <buscar-usuario></buscar-usuario>
+                            <buscar-usuario errores="{{$errors->has('jefeDeDivision') ? $errors->first('jefeDeDivision') : ''}}"></buscar-usuario>
                         </div>
                         
 
