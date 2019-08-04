@@ -13,4 +13,13 @@ function random_str($length = 8) {
     return $str;
 }
 
+function normaliza($cadena){
+    $originales =   'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+    $modificadas =  'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+    $cadena = utf8_decode($cadena);
+    $cadena = strtr($cadena, utf8_decode($originales), $modificadas);
+    $cadena = strtolower($cadena);
+    return utf8_encode($cadena);
+}
+
 ?>

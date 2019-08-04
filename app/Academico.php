@@ -12,6 +12,14 @@ class Academico extends Model
         'grado_id', 'nombre', 'apellido_pat', 'apellido_mat'
     ];
 
+    public function nombreCompleto()
+    {
+        $nombre_completo = $this->nombre . ' ' .
+                            $this->apellido_pat . ' ' .
+                            $this->apellido_mat ;
+        return $nombre_completo;
+    }
+
     public function user()
     {
         return $this->hasOne(User::class, 'academico_id');

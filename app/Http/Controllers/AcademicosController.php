@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Academico;
 
 class AcademicosController extends Controller
@@ -15,7 +16,7 @@ class AcademicosController extends Controller
 
     public function show(Academico $academico)
     {        
-        return view('academicos.show', compact('academico'));
+        return response()->json($academico);
     }
 
     public function create()
@@ -42,5 +43,26 @@ class AcademicosController extends Controller
         ]);
 
         return redirect(route('academicos.index'));
+    }
+
+    public function buscar($busqueda)
+    {
+        $busqueda = urldecode($busqueda);
+        $connection = config('database.default');
+        $driver = config("database.connections.{$connection}.driver");
+        if ($driver == 'sqlite') {
+            $academicos = Academico::orWhereRaw("nombre || ' ' || apellido_pat || ' ' || apellido_mat like '%" . 
+                                $busqueda . "%' ")
+                                ->orderBy('name', 'desc')
+                                ->limit(3)
+                                ->get();
+        } else {
+            $academicos = Academico::orWhereRaw("concat(nombre, ' ', apellido_pat, ' ', apellido_mat) like '%" . 
+                                $busqueda . "%' ")
+                                ->orderBy('name', 'desc')
+                                ->limit(3)
+                                ->get();
+        }
+        return response()->json($academicos);
     }
 }

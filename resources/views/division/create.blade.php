@@ -44,14 +44,18 @@
                         </div>
 
                         <div class="form-group">
+                            <buscar-usuario></buscar-usuario>
+                        </div>
+                        
+
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Añadir división
                                 </button>
                             </div>
                         </div>
-
-                        <hr>
                     </form>
                 </div>
             </div>

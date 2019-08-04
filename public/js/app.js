@@ -988,6 +988,7 @@ window.Vue = __webpack_require__(35);
  */
 
 Vue.component('example', __webpack_require__(39));
+Vue.component('buscar-usuario', __webpack_require__(54));
 
 var app = new Vue({
   el: '#app'
@@ -44717,6 +44718,222 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(55)
+/* template */
+var __vue_template__ = __webpack_require__(56)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/BuscarUsuario.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6ac684da", Component.options)
+  } else {
+    hotAPI.reload("data-v-6ac684da", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+
+
+    data: function data() {
+        return {
+            busqueda: '',
+            academicos: null
+        };
+    },
+
+    methods: {
+        buscarAcademico: function buscarAcademico() {
+            var _this = this;
+
+            if (this.busqueda.length > 2) {
+                axios.get('/academicos/buscar/' + this.busqueda).then(function (response) {
+                    _this.academicos = response.data;
+                    console.log(_this.academicos);
+                });
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "form-group" }, [
+      _c(
+        "label",
+        { staticClass: "col-md-4 control-label", attrs: { for: "buscarJefe" } },
+        [_vm._v("Jefe de División")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.busqueda,
+              expression: "busqueda"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { id: "buscarJefe", type: "text", placeholder: "Buscar..." },
+          domProps: { value: _vm.busqueda },
+          on: {
+            input: [
+              function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.busqueda = $event.target.value
+              },
+              _vm.buscarAcademico
+            ],
+            keyup: function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "delete", [8, 46], $event.key, [
+                  "Backspace",
+                  "Delete",
+                  "Del"
+                ])
+              ) {
+                return null
+              }
+              return _vm.buscarAcademico($event)
+            }
+          }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-8 col-md-offset-4" },
+        _vm._l(_vm.academicos, function(academico, index) {
+          return _c("div", { key: index, staticClass: "radio" }, [
+            _c("label", [
+              _c("input", {
+                attrs: {
+                  type: "radio",
+                  name: "selectAcademico",
+                  id: [academico.id],
+                  checked: ""
+                },
+                domProps: { value: [academico.id] }
+              }),
+              _vm._v(
+                "\n                " +
+                  _vm._s(
+                    academico.nombre +
+                      " " +
+                      academico.apellido_pat +
+                      " " +
+                      academico.apellido_mat
+                  ) +
+                  "\n            "
+              )
+            ])
+          ])
+        }),
+        0
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6ac684da", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
