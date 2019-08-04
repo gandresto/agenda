@@ -42,4 +42,10 @@ class Academico extends Model
         return $this->belongsToMany(Academia::class)
                     ->withPivot('estado', 'fecha_ingreso', 'fecha_egreso');
     }
+
+    public function reuniones()
+    {
+        return $this->belongsToMany('App\Reunion')
+                    ->withPivot('asistio');
+    }
 }

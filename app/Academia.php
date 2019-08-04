@@ -21,4 +21,9 @@ class Academia extends Model
         return $this->belongsToMany(Academico::class)
                     ->withPivot('estado', 'fecha_ingreso', 'fecha_egreso');
     }
+
+    public function reuniones()
+    {
+        return $this->hasMany('App\Reunion');
+    }
 }
