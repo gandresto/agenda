@@ -31,7 +31,7 @@
         <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
                 <button type="submit" class="btn btn-primary">
-                    @lang('strings.send_pass_link')
+                    @lang('strings.send_pass_reset_link')
                 </button>
             </div>
         </div>
