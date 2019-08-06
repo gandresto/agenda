@@ -3,10 +3,10 @@
     Sistema hecho sobre el framework de Laravel 5.4 con PHP 5.6.
 </p>
 
-##Instrucciones de instalación
+## Instrucciones de instalación
 
 Requerimientos:
-- Laravel 5.8
+- Laravel 5.4
 - Composer
 - npm
 
