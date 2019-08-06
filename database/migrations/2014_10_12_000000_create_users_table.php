@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration
                 'email'=> config('admin.login'),
                 'password'=> bcrypt(config('admin.password')),
                 'academico_id' => 1,
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now()->format('Y-m-d H:m:s')
             ],
         ]);
     }
