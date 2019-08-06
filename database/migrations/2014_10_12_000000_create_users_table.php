@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Carbon\Carbon;
 
 class CreateUsersTable extends Migration
 {
@@ -31,7 +32,8 @@ class CreateUsersTable extends Migration
                 'id' => 1,
                 'email'=> config('admin.login'),
                 'password'=> bcrypt(config('admin.password')),
-                'academico_id' => 1
+                'academico_id' => 1,
+                'created_at' => Carbon::now()
             ],
         ]);
     }
